@@ -29,28 +29,27 @@ g = {"А": "A",
      "Ь": "'",
      "Э": "E",
      "Ю": "Iu",
+     "Ву": "W",
+     " ": " ",
      "Я": "Ia"}
-
+g2 = {}
+for value, g in g.items():
+    g2[g] = value
 a = input()
-
 k = ""
-
 f = ["ь", "ъ", "Ъ", "Ь"]
-
 for i in a:
-
     if i.upper() in g:
-
+        if i.upper() in g:
+            if i.upper() != i:
+                k += g[i.upper()].lower()
+            else:
+                k += g[i]
+    elif i.upper() in g2:
         if i.upper() != i:
-
-            k += g[i.upper()].lower()
-
+            k += g2[i.upper()].lower()
         else:
-
-            k += g[i]
-
-    elif i not in f:
-
-        k += i.capitalize()
-
+            k += g2[i]
+    else:
+        k += i
 print(k)
